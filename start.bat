@@ -5,6 +5,12 @@ set "ROOT=%~dp0"
 if "%ROOT:~-1%"=="\" set "ROOT=%ROOT:~0,-1%"
 
 if /i "%~1" neq "--hidden" (
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%ROOT%\scripts\reconstruct_qwen_model.ps1"
+    if errorlevel 1 (
+        echo.
+        pause
+        exit /b 1
+    )
     powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%ROOT%\scripts\check_environment.ps1" -Root "%ROOT%"
     if errorlevel 1 (
         echo.
