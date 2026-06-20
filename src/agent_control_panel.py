@@ -19,7 +19,8 @@ PYTHON = Path(sys.executable)
 LLAMA_EXE = ROOT / "runtime" / "llama.cpp" / "llama-server.exe"
 DEFAULT_MODEL = ROOT / "models" / "llm" / "Qwen3.5-4B-Q4_K_M-GGUF" / "qwen3-5-4B-Q4_K_M.gguf"
 CUDA_TTS_SERVER = ROOT / "src" / "chatterbox_cuda_server.py"
-PERSONA_FILE = ROOT / "config" / "agnet_persona.txt"
+PERSONA_FILE = ROOT / "config" / "agent_persona.txt"
+LEGACY_PERSONA_FILE = ROOT / "config" / "agnet_persona.txt"
 SETTINGS_FILE = ROOT / "config" / "agent_settings.json"
 TTS_PROGRESS_FILE = ROOT / "runtime" / "tts_load_status.json"
 HOST = "127.0.0.1"
@@ -118,6 +119,11 @@ def load_persona():
     if PERSONA_FILE.exists():
         text = PERSONA_FILE.read_text(encoding="utf-8").strip()
         if text:
+            return text
+    if LEGACY_PERSONA_FILE.exists():
+        text = LEGACY_PERSONA_FILE.read_text(encoding="utf-8").strip()
+        if text:
+            PERSONA_FILE.write_text(text, encoding="utf-8")
             return text
     PERSONA_FILE.write_text(DEFAULT_PERSONA, encoding="utf-8")
     return DEFAULT_PERSONA

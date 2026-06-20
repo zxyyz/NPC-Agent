@@ -121,14 +121,14 @@ TTS 服务默认使用 CUDA ONNXRuntime，端口为 `8081`。
 
 ```text
 config/agent_settings.json
-config/agnet_persona.txt
+config/agent_persona.txt
 ```
 
 如果需要手动初始化，可以复制示例文件：
 
 ```powershell
 copy config\agent_settings.example.json config\agent_settings.json
-copy config\agnet_persona.example.txt config\agnet_persona.txt
+copy config\agent_persona.example.txt config\agent_persona.txt
 ```
 
 注意：`agent_settings.json` 里可以使用相对模型路径，也可以使用绝对路径。项目迁移到新机器时，推荐使用相对路径。

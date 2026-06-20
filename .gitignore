@@ -11,6 +11,7 @@ env/
 *.tmp
 *.wav
 config/agent_settings.json
+config/agent_persona.txt
 config/agnet_persona.txt
 
 # Large local assets

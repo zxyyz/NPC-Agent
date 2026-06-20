@@ -61,8 +61,8 @@ pip install -r requirements.txt
 
 ## 配置
 
-- 首次运行会生成 `config/agent_settings.json` 和 `config/agnet_persona.txt`。
-- 示例文件是 `config/agent_settings.example.json` 和 `config/agnet_persona.example.txt`。
+- 首次运行会生成 `config/agent_settings.json` 和 `config/agent_persona.txt`。
+- 示例文件是 `config/agent_settings.example.json` 和 `config/agent_persona.example.txt`。
 - 真实配置包含本机路径和个人角色设定，已经在 `.gitignore` 中排除。
 
 ## GitHub 提交
