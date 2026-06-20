@@ -19,6 +19,11 @@ models/**/*
 !models/README.md
 !models/llm/README.md
 !models/tts/README.md
+!models/llm/Qwen3.5-4B-Q4_K_M-GGUF/
+!models/llm/Qwen3.5-4B-Q4_K_M-GGUF/.gitattributes
+!models/llm/Qwen3.5-4B-Q4_K_M-GGUF/README.md
+!models/llm/Qwen3.5-4B-Q4_K_M-GGUF/configuration.json
+!models/llm/Qwen3.5-4B-Q4_K_M-GGUF/*.gguf.part*
 runtime/**/*
 !runtime/**/
 !runtime/README.md

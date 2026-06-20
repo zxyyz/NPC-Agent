@@ -1,6 +1,6 @@
 # 控制台
 
-本项目是一个本地 AI 角色控制台：
+本项目是一个轻量显存需求的 TTS + LLM agent 方案，用于在本地运行 AI 角色控制台：
 
 - LLM：通过 `llama.cpp` 加载 Qwen GGUF。
 - TTS：通过 `onnxruntime-gpu` 加载 Chatterbox multilingual ONNX q4。
@@ -11,9 +11,36 @@
 ```text
 src/        主程序和 TTS CUDA 服务
 config/     本地配置和角色设定
-models/     本地模型，不提交 Git
+models/     本地模型；仓库包含原版 Qwen 4B GGUF，其他模型默认不提交 Git
 runtime/    llama.cpp 等运行时，不提交 Git
 scripts/    辅助启动脚本
+```
+
+## 模型
+
+仓库随附原版 Qwen 4B Q4_K_M GGUF 模型分片：
+
+```text
+models/llm/Qwen3.5-4B-Q4_K_M-GGUF/qwen3-5-4B-Q4_K_M.gguf.part01
+models/llm/Qwen3.5-4B-Q4_K_M-GGUF/qwen3-5-4B-Q4_K_M.gguf.part02
+```
+
+模型分片通过 Git LFS 管理。克隆后如未自动拉取模型分片，可执行：
+
+```powershell
+git lfs pull
+```
+
+然后重组模型：
+
+```powershell
+.\scripts\reconstruct_qwen_model.ps1
+```
+
+重组后会生成：
+
+```text
+models/llm/Qwen3.5-4B-Q4_K_M-GGUF/qwen3-5-4B-Q4_K_M.gguf
 ```
 
 ## 启动
@@ -40,7 +67,7 @@ pip install -r requirements.txt
 
 ## GitHub 提交
 
-模型和运行时文件默认被 `.gitignore` 排除。提交前建议确认：
+除随附的原版 Qwen 4B GGUF 外，其他模型和运行时文件默认被 `.gitignore` 排除。提交前建议确认：
 
 ```powershell
 git status --ignored
